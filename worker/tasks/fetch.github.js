@@ -1,5 +1,10 @@
 var fetch = require("node-fetch");
 var redis = require("redis"),
+  client = redis.createClient({
+    host: "127.0.0.1",
+    no_ready_check: true,
+    auth_pass: "root123"
+  });
 const { promisify } = require("util");
 
 const setAsync = promisify(client.set).bind(client);
